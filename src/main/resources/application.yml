@@ -1,0 +1,17 @@
+server:
+  port: 9093
+spring:
+    datasource:
+        data: classpath:/sql/data.sql
+        driver-class-name: com.mysql.jdbc.Driver
+        password: '123456'
+        platform: mysql
+        schema: classpath:/sql/schema.sql
+        #url: jdbc:mysql://localhost/pick-a-place?verifyServerCertificate=false&useSSL=false&requireSSL=false
+        username: root
+    jpa:
+        database-platform: org.hibernate.dialect.MySQLDialect
+        generate-ddl: false
+        hibernate:
+            ddl-auto: none
+        show-sql: true
