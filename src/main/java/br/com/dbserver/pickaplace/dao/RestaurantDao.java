@@ -9,5 +9,7 @@ public interface RestaurantDao {
 	public List<Restaurant> listAllRestaurant();
 	
 	public Restaurant findRestaurantByDescription(String description);
+	
+	public Restaurant findRestaurantById(Long id);
 
 }

@@ -25,6 +25,17 @@ public class RestaurantService {
 		return listReturn;
 	}
 
+	public Restaurant findRestaurantById(Long id) throws BusinessException {
+		Restaurant restaurantReturn = null;
+
+		restaurantReturn = this.restaurantDao.findRestaurantById(id);
+		if (restaurantReturn == null) {
+			throw new BusinessException(String.format("No have register of restaurant with id equals %s.", id));
+		}
+		return restaurantReturn;
+
+	}
+
 	public Restaurant findRestaurantByDescription(String description) throws BusinessException {
 		Restaurant restaurantReturn = null;
 

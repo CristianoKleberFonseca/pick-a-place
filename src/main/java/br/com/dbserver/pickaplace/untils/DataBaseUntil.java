@@ -1,9 +1,20 @@
 package br.com.dbserver.pickaplace.untils;
 
-public final class DataBaseUntil {
+import java.util.Calendar;
+
+public class DataBaseUntil {
 	
 	public static Long generateID() {
-		return System.currentTimeMillis();
+		Calendar calendar = null;
+		try {
+			Thread.sleep(5);
+			calendar = Calendar.getInstance();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return calendar.getTimeInMillis();
 	}
 
 }

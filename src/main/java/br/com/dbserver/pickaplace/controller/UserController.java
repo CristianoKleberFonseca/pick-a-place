@@ -25,7 +25,6 @@ public class UserController {
 		
 		userReturn = this.userService.login(userName, password);
 		
-		
 		return ResponseEntity.ok(userReturn);
 	}
 }

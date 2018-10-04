@@ -1,6 +1,8 @@
 package br.com.dbserver.pickaplace.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Favorites implements Serializable {
 
@@ -11,6 +13,7 @@ public class Favorites implements Serializable {
 
 	private Long id;
 	private Employee employee;
+	private List<FavoritesItems> favoritesItems = new ArrayList<FavoritesItems>();
 
 	public Long getId() {
 		return id;
@@ -26,5 +29,13 @@ public class Favorites implements Serializable {
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+	}
+
+	public List<FavoritesItems> getFavoritesItems() {
+		return favoritesItems;
+	}
+
+	public void setFavoritesItems(List<FavoritesItems> favoritesItems) {
+		this.favoritesItems = favoritesItems;
 	}
 }

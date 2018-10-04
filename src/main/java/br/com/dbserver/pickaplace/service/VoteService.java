@@ -14,7 +14,7 @@ public class VoteService {
 	
 	@Autowired
 	private VoteDao voteDao;
-
+	
 	public Vote voting(Vote vote) {
 		Vote voteReturn = null;
 		voteReturn = this.voteDao.voting(vote);

@@ -11,6 +11,7 @@ import br.com.dbserver.pickaplace.untils.DataBaseUntil;
 
 @Repository
 public class RestaurantDaoImpl implements RestaurantDao {
+	
 	private static List<Restaurant> restaurantBD;
 	
 	static{
@@ -60,6 +61,16 @@ public class RestaurantDaoImpl implements RestaurantDao {
 		listReturn = restaurantBD;
 		
 		return listReturn;
+	}
+
+	@Override
+	public Restaurant findRestaurantById(Long id) {
+		Restaurant restaurantReturn = null;
+
+		restaurantReturn = restaurantBD.stream().filter(restaurant -> restaurant.getId().equals(id)).findAny()
+				.orElse(null);
+
+		return restaurantReturn;
 	}
 
 }
