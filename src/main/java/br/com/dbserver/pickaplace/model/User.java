@@ -2,6 +2,8 @@ package br.com.dbserver.pickaplace.model;
 
 import java.io.Serializable;
 
+import br.com.dbserver.pickaplace.untils.DataBaseUntil;
+
 public class User implements Serializable {
 
 	/**
@@ -17,10 +19,12 @@ public class User implements Serializable {
 
 	public User() {}
 	
-	public User(String userName, String email, String password) {
+	public User(String userName, String email, String password, Employee employee) {
+		this.id = DataBaseUntil.generateID();
 		this.userName= userName;
 		this.email = email;
 		this.password = password;
+		this.employee = employee;
 	}
 
 	public Long getId() {

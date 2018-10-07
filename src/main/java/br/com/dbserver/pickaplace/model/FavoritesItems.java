@@ -11,7 +11,6 @@ public class FavoritesItems implements Serializable {
 
 	private Long id;
 	private Restaurant restaurant;
-	private Favorites favorites;
 
 	public Long getId() {
 		return id;
@@ -27,13 +26,5 @@ public class FavoritesItems implements Serializable {
 
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
-	}
-
-	public Favorites getFavorites() {
-		return favorites;
-	}
-
-	public void setFavorites(Favorites favorites) {
-		this.favorites = favorites;
 	}
 }

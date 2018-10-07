@@ -2,6 +2,8 @@ package br.com.dbserver.pickaplace.model;
 
 import java.io.Serializable;
 
+import br.com.dbserver.pickaplace.untils.DataBaseUntil;
+
 public class Employee implements Serializable {
 
 	/**
@@ -11,6 +13,15 @@ public class Employee implements Serializable {
 
 	private Long id;
 	private String name;
+	
+	public Employee() {
+		
+	}
+	
+	public Employee(String name) {
+		this.id = DataBaseUntil.generateID();
+		this.name = name;
+	}
 	
 	public Long getId() {
 		return id;

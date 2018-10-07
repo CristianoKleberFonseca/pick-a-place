@@ -10,7 +10,7 @@ public class Restaurant implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
-	private String description;
+	private String name;
 	
 	public Long getId() {
 		return id;
@@ -18,10 +18,10 @@ public class Restaurant implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getDescription() {
-		return description;
+	public String getName() {
+		return name;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setName(String name) {
+		this.name = name;
 	}
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import br.com.dbserver.pickaplace.dao.FavoritesDao;
 import br.com.dbserver.pickaplace.model.Favorites;
 import br.com.dbserver.pickaplace.model.FavoritesItems;
+import br.com.dbserver.pickaplace.model.Restaurant;
 import br.com.dbserver.pickaplace.untils.DataBaseUntil;
 
 @Repository
@@ -46,6 +47,16 @@ public class FavoritesDaoImpl implements FavoritesDao {
 		hasThisItem = (favoritesItemsValidate != null);
 		
 		return hasThisItem;
+	}
+
+	@Override
+	public FavoritesItems addFavoritesItems(Restaurant restaurant) {
+		FavoritesItems favoritesItemsReturn = new FavoritesItems();
+		
+		favoritesItemsReturn.setId(DataBaseUntil.generateID());
+		favoritesItemsReturn.setRestaurant(restaurant);
+		
+		return favoritesItemsReturn;
 	}
 
 }

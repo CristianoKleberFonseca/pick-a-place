@@ -3,14 +3,14 @@ package br.com.dbserver.pickaplace.dao.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
 import br.com.dbserver.pickaplace.dao.VoteDao;
-import br.com.dbserver.pickaplace.model.Restaurant;
 import br.com.dbserver.pickaplace.model.Vote;
 import br.com.dbserver.pickaplace.untils.DataBaseUntil;
+import br.com.dbserver.pickaplace.untils.DateUtil;
 
 @Repository
 public class VoteDaoImpl implements VoteDao {
@@ -30,8 +30,12 @@ public class VoteDaoImpl implements VoteDao {
 	}
 
 	@Override
-	public Map<Restaurant, Integer> resultVoting(Date dateResult) {
-		return null;
+	public List<Vote> findAllVoteByDate(Date date) {
+		List<Vote> listVotesReturn = null;
+
+		listVotesReturn = voteBD.stream().filter(vote -> DateUtil.brazilianFormatDate(vote.getDateVoting()).equals(DateUtil.brazilianFormatDate(date))).collect(Collectors.toList());
+
+		return listVotesReturn;
 	}
 
 }

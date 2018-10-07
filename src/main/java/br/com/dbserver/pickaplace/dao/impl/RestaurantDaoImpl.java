@@ -15,33 +15,33 @@ public class RestaurantDaoImpl implements RestaurantDao {
 	private static List<Restaurant> restaurantBD;
 	
 	static{
-		Restaurant restarantOne = new Restaurant();
-		restarantOne.setId(DataBaseUntil.generateID());
-		restarantOne.setDescription("China 48");
+		Restaurant restaurantOne = new Restaurant();
+		restaurantOne.setId(DataBaseUntil.generateID());
+		restaurantOne.setName("China 48");
 		
 
-		Restaurant restarantTwo = new Restaurant();
-		restarantTwo.setId(DataBaseUntil.generateID());
-		restarantTwo.setDescription("Tepan");
+		Restaurant restaurantTwo = new Restaurant();
+		restaurantTwo.setId(DataBaseUntil.generateID());
+		restaurantTwo.setName("Tepan");
 		
-		Restaurant restarantThree = new Restaurant();
-		restarantThree.setId(DataBaseUntil.generateID());
-		restarantThree.setDescription("Zen");
+		Restaurant restaurantThree = new Restaurant();
+		restaurantThree.setId(DataBaseUntil.generateID());
+		restaurantThree.setName("Zen");
 		
-		Restaurant restarantFour = new Restaurant();
-		restarantFour.setId(DataBaseUntil.generateID());
-		restarantFour.setDescription("Galetos");
+		Restaurant restaurantFour = new Restaurant();
+		restaurantFour.setId(DataBaseUntil.generateID());
+		restaurantFour.setName("Galetos");
 		
-		Restaurant restarantFive = new Restaurant();
-		restarantFive.setId(DataBaseUntil.generateID());
-		restarantFive.setDescription("Bode do Nô");
+		Restaurant restaurantFive = new Restaurant();
+		restaurantFive.setId(DataBaseUntil.generateID());
+		restaurantFive.setName("Bode do Nô");
 		
 		restaurantBD = new ArrayList<Restaurant>();
-		restaurantBD.add(restarantOne);
-		restaurantBD.add(restarantTwo);
-		restaurantBD.add(restarantThree);
-		restaurantBD.add(restarantFour);
-		restaurantBD.add(restarantFive);
+		restaurantBD.add(restaurantOne);
+		restaurantBD.add(restaurantTwo);
+		restaurantBD.add(restaurantThree);
+		restaurantBD.add(restaurantFour);
+		restaurantBD.add(restaurantFive);
 	}
 	
 	@Override
@@ -49,7 +49,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
 		Restaurant restaurantReturn = null;
 		
 		restaurantReturn = restaurantBD.stream().filter(
-				restaurant -> restaurant.getDescription().equals(description)).findAny().orElse(null);
+				restaurant -> restaurant.getName().equals(description)).findAny().orElse(null);
 		
 		return restaurantReturn;
 	}

@@ -19,8 +19,6 @@ public class FavoritesService {
 	private RestaurantService restaurantService;
 	@Autowired
 	private EmployeeService employeeService;
-	@Autowired
-	private FavoritesItemsService favoritesItemsService;
 
 	public Favorites saveFavorites(Long idEmployee, Long idRestaurant) throws BusinessException {
 		Favorites favoritesReturn = null;
@@ -33,23 +31,26 @@ public class FavoritesService {
 			favoritesReturn = new Favorites();
 			employee = this.employeeService.findEmployeeById(idEmployee);
 			favoritesReturn.setEmployee(employee);
-			favoritesReturn = this.favoritesDao.saveFavorites(favoritesReturn);
 		}
 		restaurant = this.restaurantService.findRestaurantById(idRestaurant);
 		//Verifica se o restaurante já está incluído neste favoritos.
-		if(!this.favoritesHasThisItem(favoritesReturn, idRestaurant)) {
-			favoritesReturn.getFavoritesItems().add(this.addItemToFavorites(favoritesReturn, restaurant));
+		if(Boolean.FALSE.equals(this.favoritesHasThisItem(favoritesReturn, idRestaurant))) {
+			favoritesReturn.getFavoritesItems().add(this.buildFavoritesItems(favoritesReturn, restaurant));
+		} else {
+			throw new BusinessException(String.format("The restaurant %s is already a favorite's %s", restaurant.getName(), favoritesReturn.getEmployee().getName()));
 		}
 		
-		favoritesDao.saveFavorites(favoritesReturn);
+		if (favoritesReturn != null) {
+			this.favoritesDao.saveFavorites(favoritesReturn);
+		}
 		
 		return favoritesReturn;
 	}
 	
-	public FavoritesItems addItemToFavorites(Favorites favorites, Restaurant restaurant) {
-		FavoritesItems favoritesItemsReturn = null;
+	private FavoritesItems buildFavoritesItems(Favorites favorites, Restaurant restaurant) {
+		FavoritesItems favoritesItemsReturn = new FavoritesItems();
 		
-		favoritesItemsReturn = this.favoritesItemsService.saveFavoritesItems(favorites, restaurant);
+		favoritesItemsReturn = this.favoritesDao.addFavoritesItems(restaurant);
 		
 		return favoritesItemsReturn;
 	}
@@ -57,7 +58,7 @@ public class FavoritesService {
 	public Boolean favoritesHasThisItem(Favorites favorites, Long idRestaurant) {
 		Boolean hasThisItem = new Boolean(false);
 		
-		this.favoritesDao.favoritesHasThisItem(favorites, idRestaurant);
+		hasThisItem = this.favoritesDao.favoritesHasThisItem(favorites, idRestaurant);
 		
 		return hasThisItem;
 	}
