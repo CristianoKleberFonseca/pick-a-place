@@ -54,10 +54,15 @@ public class VoteService {
 		vote.setUser(userSelected);
 		vote.setRestaurant(restaurantSelected);
 		
-		// ESTORIA 2 - Verificar se o restaurante escolhido neste voto já foi eleito
-		// durante a semana.
 		weekOfMonthVote = DateUtil.getWeekOfMonth(vote.getDateVoting());
 		monthVote = DateUtil.getMonth(vote.getDateVoting());
+		
+		Vote voteOfDay = this.voteDao.employeeVoteOnDay(vote.getDateVoting(), vote.getUser().getEmployee().getId());
+		// ESTORIA 1 - Um profissional só poderá votar em um restaurante por dia.
+		if (voteOfDay != null) {
+			throw new BusinessException("You already voted today.");
+		}
+		// ESTORIA 2 - O mesmo restaurante não pode ser escolhido mais de uma vez durante a semana.
 		isRestaurantChosenInWeek = this.resultService.isRestaurantChosenInWeek(monthVote, yearVote, weekOfMonthVote,
 				vote.getRestaurant().getName());
 		if (Boolean.TRUE.equals(isRestaurantChosenInWeek)) {

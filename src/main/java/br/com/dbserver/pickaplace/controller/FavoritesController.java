@@ -21,7 +21,7 @@ public class FavoritesController {
 	@Autowired
 	private FavoritesService favoritesService;
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/saveFavorites", method = RequestMethod.POST)
 	public ResponseEntity<Favorites> saveFavorites(@RequestBody FavoritesResource favoritesResource) throws BusinessException {
 		Favorites favoritesReturn = null;
 		

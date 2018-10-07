@@ -19,7 +19,7 @@ public class VoteController {
 	@Autowired
 	private VoteService voteService;
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/voting", method = RequestMethod.POST)
 	public ResponseEntity<Vote> voting(@RequestBody Vote vote) throws BusinessException {
 		Vote voteReturn = null;
 		

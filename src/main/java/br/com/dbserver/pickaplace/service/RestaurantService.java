@@ -36,12 +36,12 @@ public class RestaurantService {
 
 	}
 
-	public Restaurant findRestaurantByDescription(String description) throws BusinessException {
+	public Restaurant findRestaurantByName(String name) throws BusinessException {
 		Restaurant restaurantReturn = null;
 
-		restaurantReturn = this.restaurantDao.findRestaurantByDescription(description);
+		restaurantReturn = this.restaurantDao.findRestaurantByName(name);
 		if (restaurantReturn == null) {
-			throw new BusinessException(String.format("No have register of restaurant with description equals %s.", description));
+			throw new BusinessException(String.format("No have register of restaurant with description equals %s.", name));
 		}
 		return restaurantReturn;
 

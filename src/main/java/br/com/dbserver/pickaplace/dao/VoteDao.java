@@ -9,5 +9,5 @@ public interface VoteDao {
 	
 	public Vote voting(Vote vote);
 	public List<Vote> findAllVoteByDate(Date date);
-
+	public Vote employeeVoteOnDay(Date dateVote, Long idEmployee);
 }

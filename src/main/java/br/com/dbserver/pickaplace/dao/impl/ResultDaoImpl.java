@@ -21,7 +21,7 @@ public class ResultDaoImpl implements ResultDao {
 	public Result saveResult(Result result) {
 		result.setId(DataBaseUntil.generateID());
 		resultBD.add(result);
-		
+
 		return result;
 	}
 
@@ -39,7 +39,8 @@ public class ResultDaoImpl implements ResultDao {
 	}
 
 	@Override
-	public Result findResulByWeek(Integer monthResult, Integer yearResult, Integer weekOfMonthResult, String restaurantName) {
+	public Result findResulByWeek(Integer monthResult, Integer yearResult, Integer weekOfMonthResult,
+			String restaurantName) {
 		Result resultReturn = null;
 
 		resultReturn = resultBD.stream()
@@ -55,10 +56,8 @@ public class ResultDaoImpl implements ResultDao {
 	public Result findResulByWeek(Integer monthResult, Integer yearResult, Integer weekOfMonthResult) {
 		Result resultReturn = null;
 
-		resultReturn = resultBD.stream()
-				.filter((result -> result.getMonthResult().equals(monthResult)
-						&& result.getWeekOfMonthResult().equals(weekOfMonthResult)))
-				.findAny().orElse(null);
+		resultReturn = resultBD.stream().filter((result -> result.getMonthResult().equals(monthResult)
+				&& result.getWeekOfMonthResult().equals(weekOfMonthResult))).findAny().orElse(null);
 
 		return resultReturn;
 	}

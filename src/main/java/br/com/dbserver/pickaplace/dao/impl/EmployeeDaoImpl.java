@@ -18,32 +18,32 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		employeeBD = new ArrayList<Employee>();
 		
 		Employee employeeOne = new Employee();
-		employeeOne.setId(DataBaseUntil.generateID());
+		employeeOne.setId(1L);
 		employeeOne.setName("José Soares da Silva");
 		employeeBD.add(employeeOne);
 		
 		Employee employeeTwo = new Employee();
-		employeeTwo.setId(DataBaseUntil.generateID());
+		employeeTwo.setId(2L);
 		employeeTwo.setName("Abelardo Fagundes");
 		employeeBD.add(employeeTwo);
 		
 		Employee employeeThree = new Employee();
-		employeeThree.setId(DataBaseUntil.generateID());
+		employeeThree.setId(3L);
 		employeeThree.setName("Jacqueline Lima de Castro");
 		employeeBD.add(employeeThree);
 		
 		Employee employeeFour = new Employee();
-		employeeFour.setId(DataBaseUntil.generateID());
+		employeeFour.setId(4L);
 		employeeFour.setName("João Henrique Castro da Fonseca");
 		employeeBD.add(employeeFour);
 		
 		Employee employeeFive = new Employee();
-		employeeFive.setId(DataBaseUntil.generateID());
+		employeeFive.setId(5L);
 		employeeFive.setName("Adonildo Júnior");
 		employeeBD.add(employeeFive);
 
 		Employee employeeSix = new Employee();
-		employeeSix.setId(DataBaseUntil.generateID());
+		employeeSix.setId(6l);
 		employeeSix.setName("Maria Madalena");
 		employeeBD.add(employeeSix);
 		

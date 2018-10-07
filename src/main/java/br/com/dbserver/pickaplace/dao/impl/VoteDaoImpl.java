@@ -38,4 +38,14 @@ public class VoteDaoImpl implements VoteDao {
 		return listVotesReturn;
 	}
 
+	@Override
+	public Vote employeeVoteOnDay(Date dateVote, Long idEmployee) {
+		Vote voteReturn = null;
+
+		voteReturn = voteBD.stream().filter((vote ->  DateUtil.brazilianFormatDate(vote.getDateVoting()).equals(DateUtil.brazilianFormatDate(dateVote))
+				&& vote.getUser().getEmployee().getId().equals(idEmployee))).findAny().orElse(null);
+
+		return voteReturn;
+	}
+
 }

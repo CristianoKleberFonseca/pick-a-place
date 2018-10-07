@@ -6,6 +6,9 @@ import java.util.Date;
 
 public class DateUtil {
 	
+	public static final String BRAZILIAN_FORMAT = "dd/MM/yyyy";
+	public static final String USA_FORMAT = "yyyy-MM-dd hh:mm:ss";
+	
 	public static Integer getWeekOfMonth(Date date) {
 		Integer weekOfMonthReturn = null;
 		
@@ -38,7 +41,7 @@ public class DateUtil {
 	
 	public static String brazilianFormatDate(Date date) {
 		String formatedDate = null;
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(BRAZILIAN_FORMAT);
 		
 		formatedDate = simpleDateFormat.format(date);
 		

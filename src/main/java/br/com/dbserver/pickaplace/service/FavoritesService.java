@@ -66,7 +66,7 @@ public class FavoritesService {
 	public Favorites findFavoritesByIdEmployee(Long idEmployee) {
 		Favorites favoritesReturn = null;
 		
-		this.favoritesDao.findFavoritesByIdEmployee(idEmployee);
+		favoritesReturn = this.favoritesDao.findFavoritesByIdEmployee(idEmployee);
 		
 		return favoritesReturn;
 	}

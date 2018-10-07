@@ -30,11 +30,11 @@ public class RestaurantController {
 		return ResponseEntity.ok().body(listReturn);
 	}
 	
-	@RequestMapping(value = "/findByDescrition/{description}", method = RequestMethod.GET)
-	public ResponseEntity<Restaurant> findRestaurantByDescription(@PathVariable("description") String description) throws BusinessException {
+	@RequestMapping(value = "/findByName/{name}", method = RequestMethod.GET)
+	public ResponseEntity<Restaurant> findRestaurantByName(@PathVariable("name") String name) throws BusinessException {
 		Restaurant restaurantReturn = null;
 
-			restaurantReturn = this.restaurantService.findRestaurantByDescription(description);
+			restaurantReturn = this.restaurantService.findRestaurantByName(name);
 			
 		return  ResponseEntity.ok(restaurantReturn);
 	}

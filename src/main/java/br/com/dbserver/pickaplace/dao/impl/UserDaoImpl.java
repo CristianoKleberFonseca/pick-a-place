@@ -16,26 +16,26 @@ public class UserDaoImpl implements UserDao {
 	
 	static {
 		userBD = new ArrayList<User>();
-		Employee employeeOne = new Employee("José Soares da Silva");
-		User userOne = new User("userone", "employeeone@dbserver.com.br", "123456", employeeOne);
+		Employee employeeOne = new Employee(1L, "José Soares da Silva");
+		User userOne = new User(1L, "userone", "employeeone@dbserver.com.br", "123456", employeeOne);
 		userBD.add(userOne);
-		Employee employeeTwo = new Employee("Abelardo Fagundes");
-		User userTwo = new User("usertwo", "employeetwo@dbserver.com.br", "234567", employeeTwo);
+		Employee employeeTwo = new Employee(2L, "Abelardo Fagundes");
+		User userTwo = new User(2L, "usertwo", "employeetwo@dbserver.com.br", "234567", employeeTwo);
 		userBD.add(userTwo);
-		Employee employeeThree = new Employee("Jacqueline Lima de Castro");
-		User userThree = new User("userthree", "employeethree@dbserver.com.br", "345678", employeeThree);
+		Employee employeeThree = new Employee(3L, "Jacqueline Lima de Castro");
+		User userThree = new User(3L, "userthree", "employeethree@dbserver.com.br", "345678", employeeThree);
 		userBD.add(userThree);
-		Employee employeeFour = new Employee("João Henrique Castro da Fonseca");
-		User userFour = new User("userfour", "employeefour@dbserver.com.br", "456789", employeeFour);
+		Employee employeeFour = new Employee(4L, "João Henrique Castro da Fonseca");
+		User userFour = new User(4L, "userfour", "employeefour@dbserver.com.br", "456789", employeeFour);
 		userBD.add(userFour);
-		Employee employeeFive = new Employee("Adonildo Júnior");
-		User userFive = new User("userfive", "employeefive@dbserver.com.br", "567890", employeeFive);
+		Employee employeeFive = new Employee(5L, "Adonildo Júnior");
+		User userFive = new User(5L, "userfive", "employeefive@dbserver.com.br", "567890", employeeFive);
 		userBD.add(userFive);
-		Employee employeeSix = new Employee("Maria Madalena");
-		User userSix = new User("usersix", "employeesix@dbserver.com.br", "678901", employeeSix);
+		Employee employeeSix = new Employee(6L, "Maria Madalena");
+		User userSix = new User(6L, "usersix", "employeesix@dbserver.com.br", "678901", employeeSix);
 		userBD.add(userSix);
-		Employee employeeSeven = new Employee("Deisiane Cunha Barreto");
-		User userSeven = new User("userseven", "employeeseven@dbserver.com.br", "789012", employeeSeven);
+		Employee employeeSeven = new Employee(7L, "Deisiane Cunha Barreto");
+		User userSeven = new User(7L, "userseven", "employeeseven@dbserver.com.br", "789012", employeeSeven);
 		userBD.add(userSeven);
 	}
 

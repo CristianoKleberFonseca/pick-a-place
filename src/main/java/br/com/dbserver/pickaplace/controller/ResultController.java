@@ -3,11 +3,12 @@ package br.com.dbserver.pickaplace.controller;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.dbserver.pickaplace.exception.BusinessException;
@@ -30,8 +31,8 @@ public class ResultController {
 		return ResponseEntity.ok(processingReturn);
 	}
 	
-	@RequestMapping(value = "/checkingResult/{user}/{dateResult}", method = RequestMethod.GET)
-	public ResponseEntity<Result> checkingResult(@RequestParam Date dateResult) throws BusinessException {
+	@RequestMapping(value = "/checkingResult/{dateResult}", method = RequestMethod.GET)
+	public ResponseEntity<Result> checkingResult(@PathVariable("dateResult") @DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss") Date dateResult) throws BusinessException {
 		Result resultReturn = null;
 		
 		resultReturn = this.resultService.checkingResult(dateResult);
