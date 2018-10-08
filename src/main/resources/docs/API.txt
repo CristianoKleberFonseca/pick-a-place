@@ -1,0 +1,204 @@
+Método Login
+	http://localhost:9093/api/users/login/:userName/:password -> GET
+	Request
+		Parameter
+			userName
+			password
+	Response
+		{
+			"id": 1,
+			"userName": "userone",
+			"email": "employeeone@dbserver.com.br",
+			"password": "123456",
+			"employee": {
+				"id": 1,
+				"name": "José Soares da Silva"
+			}
+		}
+
+Método Voting
+	http://localhost:9093/api/votes/voting -> POST
+	Request
+		{  
+		   "user":{  
+			  "userName":"usersix",
+			  "password": "678901"
+		   },
+		   "restaurant":{  
+			  "id":5
+		   }
+		}
+	Response
+		{
+			"id": 1539022728712,
+			"dateVoting": "2018-10-08T18:18:48.705+0000",
+			"user": {
+				"id": 6,
+				"userName": "usersix",
+				"email": "employeesix@dbserver.com.br",
+				"password": "678901",
+				"employee": {
+					"id": 6,
+					"name": "Maria Madalena"
+				}
+			},
+			"restaurant": {
+				"id": 5,
+				"name": "Bode do Nô"
+			}
+		}
+Método FindRestaurantByDescription
+	http://localhost:9093/api/restaurants/findByName/:name -> GET
+	Request
+		Parameter
+			name
+	Response
+		{
+			"id": 3,
+			"name": "Zen"
+		}
+Método ListAllRestaurant
+	http://localhost:9093/api/restaurants/listAll -> GET
+	Response
+		[
+			{
+				"id": 1,
+				"name": "China 48"
+			},
+			{
+				"id": 2,
+				"name": "Tepan"
+			},
+			{
+				"id": 3,
+				"name": "Zen"
+			},
+			{
+				"id": 4,
+				"name": "Galetos"
+			},
+			{
+				"id": 5,
+				"name": "Bode do Nô"
+			}
+		]
+Método SaveFavorites
+	http://localhost:9093/api/favorites/saveFavorites -> POST	
+	Request
+		{
+			"idEmployee": 2,
+			"idRestaurant": 1
+		}
+			
+	Response
+		{
+			"id": 1539025009214,
+			"employee": {
+				"id": 2,
+				"name": "Abelardo Fagundes"
+			},
+			"favoritesItems": [
+				{
+					"id": 1539025009208,
+					"restaurant": {
+						"id": 1,
+						"name": "China 48"
+					}
+				}
+			]
+		}
+		
+Método FindFavoritesByIdEmployee
+	http://localhost:9093/api/favorites/findByEmployee/:idEmployee -> GET
+	Request
+		Parameter
+			idEmployee
+	Response
+		{
+			"id": 1539025009214,
+			"employee": {
+				"id": 2,
+				"name": "Abelardo Fagundes"
+			},
+			"favoritesItems": [
+				{
+					"id": 1539025009208,
+					"restaurant": {
+						"id": 1,
+						"name": "China 48"
+					}
+				}
+			]
+		}
+		
+Método ListAllEmployee
+	http://localhost:9093/api/employees/listAll -> GET
+			
+	Response
+		[
+			{
+				"id": 1,
+				"name": "José Soares da Silva"
+			},
+			{
+				"id": 2,
+				"name": "Abelardo Fagundes"
+			},
+			{
+				"id": 3,
+				"name": "Jacqueline Lima de Castro"
+			},
+			{
+				"id": 4,
+				"name": "João Henrique Castro da Fonseca"
+			},
+			{
+				"id": 5,
+				"name": "Adonildo Júnior"
+			},
+			{
+				"id": 6,
+				"name": "Maria Madalena"
+			},
+			{
+				"id": 1539013822233,
+				"name": "Deisiane Cunha Barreto"
+			}
+		]
+		
+Método ProcessingResult
+	http://localhost:9093/api/resutls/votingProcessingResult -> GET
+	
+	Response
+		{
+			"id": 1539025406181,
+			"processingDateResult": "2018-10-08T19:03:26.171+0000",
+			"monthResult": 10,
+			"yearResult": 2018,
+			"weekOfMonthResult": 2,
+			"restaurant": {
+				"id": 5,
+				"name": "Bode do Nô"
+			},
+			"quantityVotes": 1
+		}
+		
+Método CheckingResult
+	http://localhost:9093/api/resutls/checkingResult/:dateResult -> GET
+	Request
+		Parameter
+			dateResult 2018-10-08 07:10:21
+	Response
+		{
+			"id": 1539025406181,
+			"processingDateResult": "2018-10-08T19:03:26.171+0000",
+			"monthResult": 10,
+			"yearResult": 2018,
+			"weekOfMonthResult": 2,
+			"restaurant": {
+				"id": 5,
+				"name": "Bode do Nô"
+			},
+			"quantityVotes": 1
+		}
+		
