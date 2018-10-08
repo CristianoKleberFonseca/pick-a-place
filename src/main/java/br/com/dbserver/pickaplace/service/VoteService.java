@@ -34,6 +34,10 @@ public class VoteService {
 		User userSelected = null;
 		Restaurant restaurantSelected = null;
 		
+		//Verificar se o voto está fora do período elegível.
+		if(DateUtil.isAfterHours(new Date())) {
+			throw new BusinessException("Voting after hours.");
+		}
 		// Verificar se usuário foi informada.
 		if (vote.getUser() == null || vote.getUser().getUserName() == null || vote.getUser().getUserName() == null) {
 			throw new BusinessException("User no informed.");

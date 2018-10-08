@@ -1,6 +1,7 @@
 package br.com.dbserver.pickaplace.exception;
 
-import java.util.stream.Collectors;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.validation.ConstraintViolationException;
 
@@ -9,17 +10,40 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import br.com.dbserver.pickaplace.untils.DateUtil;
+
 @ControllerAdvice
 public class ExceptionHandlerController {
 
 	@ExceptionHandler(ConstraintViolationException.class)
 	public ResponseEntity<?> validateError(ConstraintViolationException ex) {
-		return ResponseEntity.badRequest()
-				.body(ex.getConstraintViolations().stream().map(cv -> cv.getMessage()).collect(Collectors.toList()));
+		ErrorDetailJson errorDetailJson = new ErrorDetailJson();
+		Date date = new Date();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DateUtil.USA_FORMAT);
+		
+		errorDetailJson.setDate(simpleDateFormat.format(date));
+		errorDetailJson.setStatus(HttpStatus.BAD_REQUEST.value());
+		errorDetailJson.setTitle("BAD REQUEST");
+		errorDetailJson.setDetail(ex.getMessage());
+		
+		return new ResponseEntity<>(errorDetailJson, null, HttpStatus.BAD_REQUEST);
+//		return ResponseEntity.badRequest()
+//				.body(ex.getConstraintViolations().stream().map(cv -> cv.getMessage()).collect(Collectors.toList()));
 	}
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<?> otherErrors(Exception ex) {
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
+		
+		ErrorDetailJson errorDetailJson = new ErrorDetailJson();
+		Date date = new Date();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DateUtil.USA_FORMAT);
+		
+		errorDetailJson.setDate(simpleDateFormat.format(date));
+		errorDetailJson.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+		errorDetailJson.setTitle("INTERNAL SERVER ERROR");
+		errorDetailJson.setDetail(ex.getMessage());
+		
+		return new ResponseEntity<>(errorDetailJson, null, HttpStatus.INTERNAL_SERVER_ERROR);
+//		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
 	}
 }

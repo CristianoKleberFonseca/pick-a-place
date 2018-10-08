@@ -20,7 +20,7 @@ import org.springframework.web.context.WebApplicationContext;
 import br.com.dbserver.pickaplace.PickAPlaceApplicationTests;
 
 public class TestRestaurantController extends PickAPlaceApplicationTests {
-	private static final Logger LOGGER = LogManager.getLogger(TestRestaurantController.class);	
+	private static final Logger LOGGER = LogManager.getLogger(TestRestaurantController.class);
 	private static final String URL_SERVICE = "/api/restaurants";
 	public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(),
 			MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
@@ -28,7 +28,7 @@ public class TestRestaurantController extends PickAPlaceApplicationTests {
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 	private MockMvc mockMvc;
-	
+
 	@Before
 	public void setup() {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
@@ -37,17 +37,35 @@ public class TestRestaurantController extends PickAPlaceApplicationTests {
 	@Test
 	public void testListAllRestaurant() throws Exception {
 		String webMethod = "/listAll";
-		MvcResult result = this.mockMvc.perform(get(URL_SERVICE+webMethod)).andExpect(status().isOk())
+		MvcResult result = this.mockMvc.perform(get(URL_SERVICE + webMethod)).andExpect(status().isOk())
 				.andExpect(content().contentType("application/json;charset=UTF-8")).andReturn();
 
-		LOGGER.info("Result TestListAll -> "+result.getResponse().getContentAsString());
+		LOGGER.info("Result TestListAll -> " + result.getResponse().getContentAsString());
 	}
 
 	@Test
 	public void testFindByName() throws Exception {
-		MvcResult result = this.mockMvc.perform(get("/api/restaurants/findByName/Bode do Nô").characterEncoding("UTF-8")).andExpect(status().isOk())
-				.andExpect(content().contentType("application/json;charset=UTF-8")).andReturn();
+		String webMethod = "/findByName/";
+		String parameter = "Bode do Nô";
 
-		LOGGER.info("Result TestFindByName -> "+result.getResponse().getContentAsString());
+		MvcResult result = this.mockMvc
+				.perform(get(URL_SERVICE + webMethod + parameter).contentType(APPLICATION_JSON_UTF8))
+				.andExpect(status().isOk()).andExpect(content().contentType("application/json;charset=UTF-8"))
+				.andReturn();
+
+		LOGGER.info("Result TestFindByName -> " + result.getResponse().getContentAsString());
+	}
+
+	@Test
+	public void testFindByNameInvalid() throws Exception {
+		String webMethod = "/findByName/";
+		String parameter = "Teste Restaurante";
+
+		MvcResult result = this.mockMvc
+				.perform(get(URL_SERVICE + webMethod + parameter).contentType(APPLICATION_JSON_UTF8))
+				.andExpect(status().isInternalServerError()).andExpect(content().contentType("application/json;charset=UTF-8"))
+				.andReturn();
+
+		LOGGER.info("Result TestFindByNameInvalid -> " + result.getResponse().getContentAsString());
 	}
 }

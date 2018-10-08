@@ -21,7 +21,7 @@ import br.com.dbserver.pickaplace.PickAPlaceApplicationTests;
 
 public class TestFavoritesController extends PickAPlaceApplicationTests {
 
-	private static final Logger LOGGER = LogManager.getLogger(TestFavoritesController.class);	
+	private static final Logger LOGGER = LogManager.getLogger(TestFavoritesController.class);
 	private static final String URL_SERVICE = "/api/favorites";
 	public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(),
 			MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
@@ -40,9 +40,11 @@ public class TestFavoritesController extends PickAPlaceApplicationTests {
 		String webMethod = "/saveFavorites";
 		String requestJson = "{\"idEmployee\": 1,\"idRestaurant\": 1}";
 
-		MvcResult result = this.mockMvc.perform(post(TestFavoritesController.URL_SERVICE+webMethod).contentType(TestFavoritesController.APPLICATION_JSON_UTF8).content(requestJson)).andExpect(status().isOk()).andReturn();
+		MvcResult result = this.mockMvc.perform(post(URL_SERVICE + webMethod)
+				.contentType(TestFavoritesController.APPLICATION_JSON_UTF8).content(requestJson))
+				.andExpect(status().isOk()).andReturn();
 
-		LOGGER.info("Result TestSaveFavorites -> "+result.getResponse().getContentAsString());
+		LOGGER.info("Result TestSaveFavorites -> " + result.getResponse().getContentAsString());
 	}
 
 	@Test
@@ -50,8 +52,23 @@ public class TestFavoritesController extends PickAPlaceApplicationTests {
 		String webMethod = "/findByEmployee/";
 		Long idEmployee = 1L;
 
-		MvcResult result = this.mockMvc.perform(get(TestFavoritesController.URL_SERVICE+webMethod+idEmployee).contentType(TestFavoritesController.APPLICATION_JSON_UTF8)).andExpect(status().isOk()).andReturn();
+		MvcResult result = this.mockMvc
+				.perform(get(URL_SERVICE + webMethod + idEmployee)
+						.contentType(TestFavoritesController.APPLICATION_JSON_UTF8))
+				.andExpect(status().isOk()).andReturn();
 
-		LOGGER.info("Result TestFindFavoritesByIdEmployee -> "+result.getResponse().getContentAsString());
+		LOGGER.info("Result TestFindFavoritesByIdEmployee -> " + result.getResponse().getContentAsString());
+	}
+
+	@Test
+	public void testSaveFavoritesInvalidIdEmployee() throws Exception {
+		String webMethod = "/saveFavorites";
+		String requestJson = "{\"idEmployee\": 1000,\"idRestaurant\": 1}";
+		
+		MvcResult result = this.mockMvc.perform(post(URL_SERVICE + webMethod)
+				.contentType(TestFavoritesController.APPLICATION_JSON_UTF8).content(requestJson))
+				.andExpect(status().isInternalServerError()).andReturn();
+
+		LOGGER.info("Result TestSaveFavoritesInvalidIdEmployee -> " + result.getResponse().getContentAsString());
 	}
 }

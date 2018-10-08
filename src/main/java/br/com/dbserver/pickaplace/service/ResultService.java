@@ -97,11 +97,14 @@ public class ResultService {
 		return isChosenResult;
 	}
 
-	private Map<Long, Integer> processResultDaily(Date dateVoting) {
+	private Map<Long, Integer> processResultDaily(Date dateVoting) throws BusinessException {
 		Map<Long, Integer> processResulDailyReturn = null;
 		List<Vote> voteDailyProcessed = null;
 
 		voteDailyProcessed = this.voteService.findAllVoteByDate(dateVoting);
+		if(voteDailyProcessed == null || voteDailyProcessed.isEmpty()) {
+			throw new BusinessException("Don't have vote registry for today.");			
+		}
 		processResulDailyReturn = this.generateResult(voteDailyProcessed);
 
 		return processResulDailyReturn;
