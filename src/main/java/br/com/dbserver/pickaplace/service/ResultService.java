@@ -137,4 +137,28 @@ public class ResultService {
 
 		return keyReturn;
 	}
+
+	public Result checkingResultProcessed(Date dateResult) throws BusinessException {
+		Result resultReturn = null;
+		Integer monthResult = null;
+		Integer yearResult = null;
+		Integer weekOfMonth = null;
+
+		// Validar se a data foi informada.
+		if (dateResult == null) {
+			throw new BusinessException("Processing date no informed.");
+		}
+
+		monthResult = DateUtil.getMonth(dateResult);
+		yearResult = DateUtil.getYear(dateResult);
+		weekOfMonth = DateUtil.getWeekOfMonth(dateResult);
+		resultReturn = this.resultDao.checkingResult(monthResult, yearResult, weekOfMonth);
+
+		//Verificar se os votos já foram processados. 
+		if(resultReturn != null) {
+			throw new BusinessException(String.format("Process of day %s already executed", DateUtil.brazilianFormatDate(new Date())));
+		}
+
+		return resultReturn;
+	}
 }

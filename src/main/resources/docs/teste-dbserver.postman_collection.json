@@ -1,0 +1,303 @@
+{
+	"id": "d8e22d31-1bed-724c-ecf9-663df116a8fb",
+	"name": "teste-dbserver",
+	"description": "",
+	"order": [
+		"adff334f-db0d-d4e7-a910-79d6a6fd7cfa",
+		"c4ff112d-d162-c008-d5e5-06cd8f0127bd",
+		"a73c5dfb-88fa-6f52-ed77-d3f01e57b0b7",
+		"61ab6783-8e7b-3faa-9f7c-b354636dedb5",
+		"4de6473b-28a6-c801-90c6-7a7da04e2dac",
+		"52a089da-c3e8-5fe0-9b49-8872226d2f7c",
+		"910e1685-33fd-1b09-78cf-96fa77b88d8b",
+		"d3af2ff8-96ef-e02e-b999-340dd02d3b91",
+		"ae46381a-8d65-3b2d-7aba-f1f38cbf3c62"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1538251028270,
+	"owner": "2981680",
+	"public": false,
+	"requests": [
+		{
+			"id": "4de6473b-28a6-c801-90c6-7a7da04e2dac",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:9093/api/favorites/findByEmployee/:idEmployee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {
+				"idEmployee": "1538926292701"
+			},
+			"pathVariableData": [
+				{
+					"key": "idEmployee",
+					"value": "1538926292701"
+				}
+			],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1538928375074,
+			"name": "FindFavoritesByIdEmployee",
+			"description": "",
+			"collectionId": "d8e22d31-1bed-724c-ecf9-663df116a8fb",
+			"responses": []
+		},
+		{
+			"id": "52a089da-c3e8-5fe0-9b49-8872226d2f7c",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:9093/api/favorites/saveFavorites",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1538958260363,
+			"name": "SaveFavorites",
+			"description": "",
+			"collectionId": "d8e22d31-1bed-724c-ecf9-663df116a8fb",
+			"responses": [],
+			"rawModeData": "{\n\t\"idEmployee\": 10,\n\t\"idRestaurant\": 1\n}"
+		},
+		{
+			"id": "61ab6783-8e7b-3faa-9f7c-b354636dedb5",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:9093/api/restaurants/listAll",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1538450462120,
+			"name": "ListAllRestaurant",
+			"description": "",
+			"collectionId": "d8e22d31-1bed-724c-ecf9-663df116a8fb",
+			"responses": []
+		},
+		{
+			"id": "910e1685-33fd-1b09-78cf-96fa77b88d8b",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": ""
+				}
+			],
+			"url": "http://localhost:9093/api/employees/listAll",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1538616703733,
+			"name": "ListAllEmployee",
+			"description": "",
+			"collectionId": "d8e22d31-1bed-724c-ecf9-663df116a8fb",
+			"responses": []
+		},
+		{
+			"id": "a73c5dfb-88fa-6f52-ed77-d3f01e57b0b7",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:9093/api/restaurants/findByName/:name",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {
+				"name": "Zen"
+			},
+			"pathVariableData": [
+				{
+					"key": "name",
+					"value": "Zen"
+				}
+			],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1538931403066,
+			"name": "FindRestaurantByDescription",
+			"description": "",
+			"collectionId": "d8e22d31-1bed-724c-ecf9-663df116a8fb",
+			"responses": []
+		},
+		{
+			"id": "adff334f-db0d-d4e7-a910-79d6a6fd7cfa",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": " http://localhost:9093/api/users/login/:userName/:password",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {
+				"userName": "userone",
+				"password": "123456"
+			},
+			"pathVariableData": [
+				{
+					"key": "userName",
+					"value": "userone"
+				},
+				{
+					"key": "password",
+					"value": "123456"
+				}
+			],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1538700187766,
+			"name": "Login",
+			"description": "",
+			"collectionId": "d8e22d31-1bed-724c-ecf9-663df116a8fb",
+			"responses": []
+		},
+		{
+			"id": "ae46381a-8d65-3b2d-7aba-f1f38cbf3c62",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:9093/api/resutls/checkingResult/:dateResult",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {
+				"dateResult": "2018-10-08 07:10:21"
+			},
+			"pathVariableData": [
+				{
+					"key": "dateResult",
+					"value": "2018-10-08 07:10:21"
+				}
+			],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1538999545647,
+			"name": "CheckingResult",
+			"description": "",
+			"collectionId": "d8e22d31-1bed-724c-ecf9-663df116a8fb",
+			"responses": []
+		},
+		{
+			"id": "c4ff112d-d162-c008-d5e5-06cd8f0127bd",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:9093/api/votes/voting",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1539001238746,
+			"name": "Voting",
+			"description": "",
+			"collectionId": "d8e22d31-1bed-724c-ecf9-663df116a8fb",
+			"responses": [],
+			"rawModeData": "{  \n   \"user\":{  \n      \"userName\":\"usersix\",\n      \"password\": \"678901\"\n   },\n   \"restaurant\":{  \n      \"id\":5\n   }\n}"
+		},
+		{
+			"id": "d3af2ff8-96ef-e02e-b999-340dd02d3b91",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:9093/api/resutls/votingProcessingResult",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1538859148683,
+			"name": "ProcessingResult",
+			"description": "",
+			"collectionId": "d8e22d31-1bed-724c-ecf9-663df116a8fb",
+			"responses": []
+		}
+	]
+}

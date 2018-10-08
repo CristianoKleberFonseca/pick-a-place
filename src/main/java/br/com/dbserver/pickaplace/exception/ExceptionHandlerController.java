@@ -27,8 +27,6 @@ public class ExceptionHandlerController {
 		errorDetailJson.setDetail(ex.getMessage());
 		
 		return new ResponseEntity<>(errorDetailJson, null, HttpStatus.BAD_REQUEST);
-//		return ResponseEntity.badRequest()
-//				.body(ex.getConstraintViolations().stream().map(cv -> cv.getMessage()).collect(Collectors.toList()));
 	}
 
 	@ExceptionHandler(Exception.class)
@@ -44,6 +42,5 @@ public class ExceptionHandlerController {
 		errorDetailJson.setDetail(ex.getMessage());
 		
 		return new ResponseEntity<>(errorDetailJson, null, HttpStatus.INTERNAL_SERVER_ERROR);
-//		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
 	}
 }

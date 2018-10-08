@@ -76,6 +76,7 @@ public class TestResultController extends PickAPlaceApplicationTests {
 	}
 
 	@Test
+	// ESTORIA 3 - Mostrar de alguma forma o resultado da votação.
 	public void testResult2() throws Exception {
 		String webMethod = "/checkingResult/";
 		SimpleDateFormat simpleDateFormate = new SimpleDateFormat(DateUtil.USA_FORMAT);

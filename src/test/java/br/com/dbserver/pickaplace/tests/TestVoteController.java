@@ -41,7 +41,6 @@ public class TestVoteController extends PickAPlaceApplicationTests {
 		String webMethod = "/voting";
 		MvcResult result = null;
 		List<String> requestsJson = new ArrayList<String>();
-		requestsJson.add("{\"user\":{\"userName\":\"userone\",\"password\": \"123456\"},\"restaurant\":{\"id\":1}}");
 		requestsJson.add("{\"user\":{\"userName\":\"usertwo\",\"password\": \"234567\"},\"restaurant\":{\"id\":1}}");
 		requestsJson.add("{\"user\":{\"userName\":\"userthree\",\"password\": \"345678\"},\"restaurant\":{\"id\":2}}");
 		requestsJson.add("{\"user\":{\"userName\":\"userfour\",\"password\": \"456789\"},\"restaurant\":{\"id\":3}}");
@@ -57,4 +56,25 @@ public class TestVoteController extends PickAPlaceApplicationTests {
 		}
 	}
 
+	// ESTORIA 1 - Um profissional só pode votar em um restaurante por dia.
+	@Test
+	public void testVoteOneRestaurantPerDay() throws Exception {
+		String webMethod = "/voting";
+		MvcResult result = null;
+		String requestJson = null;
+		requestJson = "{\"user\":{\"userName\":\"userone\",\"password\": \"123456\"},\"restaurant\":{\"id\":1}}";
+
+		result = this.mockMvc.perform(post(URL_SERVICE + webMethod)
+				.contentType(TestFavoritesController.APPLICATION_JSON_UTF8).content(requestJson))
+				.andExpect(status().isOk()).andReturn();		
+		LOGGER.info("Result TestVoteOneRestaurantPerDay OK -> " + result.getResponse().getContentAsString());
+		
+		requestJson = "{\"user\":{\"userName\":\"userone\",\"password\": \"123456\"},\"restaurant\":{\"id\":2}}";
+		result = this.mockMvc.perform(post(URL_SERVICE + webMethod)
+				.contentType(TestFavoritesController.APPLICATION_JSON_UTF8).content(requestJson))
+				.andExpect(status().isInternalServerError()).andReturn();
+		LOGGER.info("Result TestVoteOneRestaurantPerDay NOK -> " + result.getResponse().getContentAsString());
+	}
+
+	// ESTORIA 2 - O mesmo restaurante não pode ser escolhido mais de uma vez durante a semana.
 }

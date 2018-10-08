@@ -38,6 +38,7 @@ public class VoteService {
 		if(DateUtil.isAfterHours(new Date())) {
 			throw new BusinessException("Voting after hours.");
 		}
+		
 		// Verificar se usuário foi informada.
 		if (vote.getUser() == null || vote.getUser().getUserName() == null || vote.getUser().getUserName() == null) {
 			throw new BusinessException("User no informed.");
@@ -52,6 +53,9 @@ public class VoteService {
 		if (vote.getRestaurant() == null || vote.getRestaurant().getId() == null) {
 			throw new BusinessException("Restaurant no informed.");
 		}
+		//Verificar se os votos já foram processados. 
+		this.resultService.checkingResultProcessed(new Date());
+		
 		restaurantSelected = this.restaurantService.findRestaurantById(vote.getRestaurant().getId());
 		
 		vote.setDateVoting(new Date());

@@ -22,7 +22,7 @@ import br.com.dbserver.pickaplace.PickAPlaceApplicationTests;
 public class TestFavoritesController extends PickAPlaceApplicationTests {
 
 	private static final Logger LOGGER = LogManager.getLogger(TestFavoritesController.class);
-	private static final String URL_SERVICE = "/api/favorites";
+	public static final String URL_SERVICE = "/api/favorites";
 	public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(),
 			MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
 

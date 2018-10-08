@@ -68,7 +68,7 @@ public class DateUtil {
 		String hourStart = "08:00:00";
 		String hourEnd = "11:25:00";
 		
-		if ((hourCheck.compareTo(hourStart) >= 0) && (hourCheck.compareTo(hourEnd) <= 0)) {
+		if ((hourCheck.compareTo(hourStart) <= 0) && (hourCheck.compareTo(hourEnd) >= 0)) {
 			isAfterHours = true;
 		}
 		return isAfterHours;
